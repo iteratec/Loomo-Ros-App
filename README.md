@@ -1,6 +1,10 @@
 ## Rosjava Loomo App ##
 
+## Disclaimer
 
+This project is a prototype developed by iteratec's students and interns.
+It is work in progress in many areas and does not reflect the usual code quality standards
+applied by iteratec.
 
 ### Project Structure ###
 
