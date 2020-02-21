@@ -107,16 +107,6 @@ then run
 cd ~/yourWorkspace
 catkin_make
 ```
-
-To use the laser-scans for building a map or localization, the system needs to know the laser's position with respect to the robot's base frame. Therefore this transformation needs to be published by a static-transform-publisher. So you can measure the translation and rotation of your mounted laser-scanner with respect to the center of the robot on ground level. Then in loomo_laser/src/launch/laser_filter.launch in line
-<node pkg="tf" type="static_transform_publisher" name="laser_transformer" args="0.20 0.0 0.30 -1.57079632679 0 0 base_center_wheel_axis_frame laser 100" />
-replace
-args="0.20 0.0 0.30 -1.57079632679 0 0"
-
-with the position and orientation of your laser scanner. Meaning x y z in meters and pitch yaw roll in radians. The robot is facing the x direction. The lasers orientation can be found in its data sheet.
-
-In loomo_laser/src/config/laser_filter.yaml and laser_filter_clearing.yaml an angle in radians is defined of what range of the laser to ignore so it doesn't scan the robot itself. If your scanner is positioned differently you will have to change that as well.
-
 Then you can source your workspace in the ~/.bashrc file as well:
 ```
 source /opt/ros/kinetic/setup.bash
@@ -136,6 +126,17 @@ To let Loomo know about the ROS MASTER, add the MASTER_URI in the constructor of
 ```
 super("RosDeveloperActivity", "RosDeveloperActivity", new URI("http://<MasterURI>:11311"));
 ```
+To use the laser-scans for building a map or localization, the system needs to know the laser's position with respect to the robot's base frame. Therefore this transformation needs to be published by a static-transform-publisher. So you can measure the translation and rotation of your mounted laser-scanner with respect to the center of the robot on ground level. Then in the App in the TFPublisher in run() find the block that creates the transformation from the frame "BASE_POSE_FRAME" to the frame "laser". Add the orientation of your laser in radians in this line
+```
+org.apache.commons.math3.complex.Quaternion q_laser= toQuaternion(0,0,-PI/2);
+```
+The robot is facing the x direction. The lasers orientation can be found in its data sheet.
+Then add the translation w.r.t base frame in the new Translation() part of
+```
+tfData.set(target_laser,source_laser,System.currentTimeMillis(),rotation_laser,new Translation(0.2f,0.2f,0),0);
+```
+In loomo-app/src/main/res/raw/laser_filter.yaml and loomo-app/src/main/res/raw/laser_filter_clearing.yaml an angle in radians is defined of what range of the laser to ignore so it doesn't scan the robot itself. If your scanner is positioned differently you will have to change that as well.
+
 
 ## Drawing a new map
 Ensure that your PC, Loomo and the Raspberry Pi are all in the same wireless network. You can test this by pinging Loomo and the Raspberry Pi. You should also check that the time in all systems is synchronized, otherwise you will run into trouble with the transformations later on.
@@ -202,12 +203,8 @@ Now when you follow the 'navigating with an existing map' section and choose you
 ## Navigating with an existing map
 Ensure that your PC, Loomo and the Raspberry Pi are all in the same wireless network. You can test this by pinging Loomo and the Raspberry Pi. You should also check that the time in all systems is synchronized, otherwise you will run into trouble with the transformations later on.
 
-Here the laserscanner is used for localization and Loomo's RealSense camera is used for path planning, so obstacle avoidance.
-Ensure all nodes are started in startNodes() in the RosService. Check that the amcl node uses the filtered laserscans for localization, so in startAMCL() should be written:
-```
-String[] remappingArguments = {"scan:=scan_filtered","map:=amcl_map"};
-```
-
+Here the laserscanner is used for localization and for path planning, so obstacle avoidance.
+Ensure all nodes are started in startNodes() in the RosService.
 Start the ROS Master on your PC
 ```
 roscore
@@ -222,7 +219,7 @@ roslaunch rplidar_ros rplidar.launch
 ```
 
 and then the App on Loomo. Long click on Loomo's display and choose your location from the drop-down menu. Then click again and choose init_navigation.
-Launch the laser-scan transformation and filter in a new terminal
+Launch the rviz in a new terminal
 ```
 roslaunch loomo_laser rviz_laserfilter.launch
 ```
