@@ -1,0 +1,28 @@
+
+scan_filter_chain:
+- name: filter
+  type: laser_filters/LaserScanRangeFilter
+  params:
+    use_message_range_limits: false
+    lower_threshold: 0.55
+    lower_replacement_value: .inf
+    upper_threshold: 2.8
+    #those are the ranges according to Intel
+    #has to be lower than reported maxrange!
+    #upper_replacement_value: 2.8
+
+#- type: laser_filters/LaserArrayFilter
+ # name: laser_median_filter
+  #params: 
+   # range_filter_chain:
+    #  - name: median_5
+     #   type: filters/MultiChannelMedianFilterFloat 
+      #  params:
+       #   number_of_observations: 2
+        #  unused: 10
+    #intensity_filter_chain:
+     # - name: median_5
+      #  type: filters/MultiChannelMedianFilterFloat 
+       # params:
+        #  number_of_observations: 2
+         # unused: 10

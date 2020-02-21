@@ -1,0 +1,15 @@
+
+  global_frame: "map"
+  #again its important to set the correct base frame
+  base_frame_id: "base_center_wheel_axis_frame"
+  robot_base_frame: "base_center_wheel_axis_frame"
+ #frequencys might have to be set lower if computational power is not enough
+  update_frequency: 2.0
+  publish_frequency: 2.0
+  #how long to wait for transforms.(extrapolation error)
+  transform_tolerance: 10.0
+  static_map: false
+  rolling_window: true
+  width: 6.0
+  height: 6.0
+  resolution: 0.08

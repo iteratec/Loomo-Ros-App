@@ -1,0 +1,9 @@
+  global_frame: "map"
+  #to set up the correct base frame is important or it wont work
+  base_frame_id: "base_center_wheel_axis_frame"
+  robot_base_frame: "base_center_wheel_axis_frame"
+  update_frequency: 1.0
+  #when using slam this might has to be set to false
+  static_map: true
+#how long to wait for transforms.(extrapolation error)
+  transform_tolerance: 10.0

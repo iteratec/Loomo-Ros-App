@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="de.iteratec.loomo.activity.RosDeveloperActivity">
+
+
+    <com.segway.robot.sdk.emoji.EmojiView
+      android:id="@+id/face"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+        <TextView
+          android:id="@+id/welcome"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="200dp"
+          android:alpha="0.6"
+          android:gravity="center"
+          android:text="@string/ros_activity_hello"
+          android:textSize="25sp"/>
+        <TextView
+          android:id="@+id/state"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/active_state"
+          />
+
+        <!--Button
+            android:id="@+id/pop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:text="" /-->
+
+    </com.segway.robot.sdk.emoji.EmojiView>
+
+</android.support.constraint.ConstraintLayout>

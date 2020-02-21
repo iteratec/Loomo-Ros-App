@@ -1,0 +1,5 @@
+# ninja log v5
+0	28	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	710b2f0147cdd27b
+28	45	0	/home/maximilian/hpa_loomo/receptionist-app/loomo-app/build/intermediates/cmake/debug/obj/arm64-v8a/libhello-jni.so	3cb80d6d654affd2
+0	40	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	710b2f0147cdd27b
+40	57	0	/home/maximilian/hpa_loomo/receptionist-app/loomo-app/build/intermediates/cmake/debug/obj/arm64-v8a/libhello-jni.so	3cb80d6d654affd2

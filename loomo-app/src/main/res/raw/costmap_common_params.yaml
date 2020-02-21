@@ -1,0 +1,44 @@
+   
+
+    base_frame_id: "base_center_wheel_axis_frame"
+    robot_base_frame: "base_center_wheel_axis_frame"
+    robot_radius: 0.18
+    #footprint: [[-0.18, -0.285], [-0.18, 0.285], [0.24, 0.285], [0.24, -0.285]]
+    #footprint_padding: 0.07
+    transform_tolerance: 10.0
+    #robot_radius: ir_of_robot
+    plugins:
+    - {name: static_layer, type: 'costmap_2d::StaticLayer'}
+    - {name: obstacle_layer, type: 'costmap_2d::ObstacleLayer'}
+    - {name: inflation_layer, type: 'costmap_2d::InflationLayer'}
+    static_layer:
+      #remapping of this can be useful with multiple layers. have to make sure amcl doesn't get confused here
+      map_topic: "map"
+      #The threshold value at which to consider a cost lethal when reading in a map from the map server.default:100 optization?
+      lethal_cost_threshold: 253
+    #The value for which a cost should be considered unknown when reading in a map from the map server. If the costmap is not tracking unknown space, costs of this value will be considered occupied. A value of zero also results in this parameter being unused.
+      unknown_cost_value: -1
+    inflation_layer:
+    #wiki: The inflation radius should be set to the maximum distance from obstacles at which a cost should be incurred. For example, setting the inflation radius at 0.55 meters means that the robot will treat all paths that stay 0.55 meters or more away from obstacles as having equal obstacle cost.
+      inflation_radius: 1.0
+      # default 10.0
+      cost_scaling_factor: 10.0
+    obstacle_layer:
+      #the sensor sources seperated by spaces
+      observation_sources: laser_scan_sensor laser_scan_sensor_clearing depthimages laser
+
+
+      laser: {sensor_frame: laser, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+      depthimages: {sensor_frame: rsdepth_center_neck_fix_frame, data_type: LaserScan, topic: scan_depthimage, marking: true, clearing: true}
+      #the filtered laserscan so it doesn't scan itself. To fill in correct sensor_frame and topic is very important.
+      laser_scan_sensor: {sensor_frame: rsdepth_center_neck_fix_frame, data_type: LaserScan, topic: scan_filtered, marking: true, clearing: true}
+      # this is a simulated sensor source by the laser_filters node. Its purpose is just to clear obstacles as the normal laser ratings cant do that because of .inf values
+      laser_scan_sensor_clearing: {sensor_frame: rsdepth_center_neck_fix_frame, data_type: LaserScan, topic: scan_clearing, marking: false, clearing: true}
+      #point_cloud_sensor: {sensor_frame: frame_name, data_type: PointCloud, topic: topic_name, marking: true, clearing: true}
+      #wiki: determines the maximum range sensor reading that will result in an obstacle being put into the costmap
+      obstacle_range: 6.0
+      #wiki: determines the range to which we will raytrace freespace given a sensor reading
+      raytrace_range: 9.0
+
+
+

@@ -1,0 +1,41 @@
+
+{
+	"buildFiles" : 
+	[
+		"/home/maximilian/hpa_loomo/receptionist-app/loomo-app/src/main/cpp/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/home/maximilian/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/maximilian/hpa_loomo/receptionist-app/loomo-app/.externalNativeBuild/cmake/debug/x86_64 --target clean"
+	],
+	"libraries" : 
+	{
+		"hello-jni-Debug-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "hello-jni",
+			"buildCommand" : "/home/maximilian/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/maximilian/hpa_loomo/receptionist-app/loomo-app/.externalNativeBuild/cmake/debug/x86_64 --target hello-jni",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android --gcc-toolchain=/home/maximilian/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/maximilian/Android/Sdk/ndk-bundle/sysroot -Dhello_jni_EXPORTS  -isystem /home/maximilian/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/maximilian/hpa_loomo/receptionist-app/loomo-app/src/main/cpp/hello-jni.c",
+					"workingDirectory" : "/home/maximilian/hpa_loomo/receptionist-app/loomo-app/.externalNativeBuild/cmake/debug/x86_64"
+				}
+			],
+			"output" : "/home/maximilian/hpa_loomo/receptionist-app/loomo-app/build/intermediates/cmake/debug/obj/x86_64/libhello-jni.so",
+			"toolchain" : "13751472920699624575"
+		}
+	},
+	"toolchains" : 
+	{
+		"13751472920699624575" : 
+		{
+			"cCompilerExecutable" : "/home/maximilian/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/home/maximilian/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}

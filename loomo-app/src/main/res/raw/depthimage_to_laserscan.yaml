@@ -1,0 +1,7 @@
+output_frame_id: "rsdepth_center_neck_fix_frame"
+frame_id: "camera_frame"
+scan_height: 10
+range_min: 0.55
+range_max: 10.0
+scan_offset: 10
+filter: 2

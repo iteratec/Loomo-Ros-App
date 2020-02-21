@@ -1,0 +1,21 @@
+
+respawn: true  
+base_frame_id: "base_center_wheel_axis_frame"
+odom_frame_id: "odom"
+transform_tolerance: 5.0  
+gui_publish_rate: 2.0  
+odom_model_type: "diff-corrected"  
+odom_alpha1: 0.005  
+odom_alpha2: 0.005  
+odom_alpha3: 0.010  
+odom_alpha4: 0.005  
+odom_alpha5: 0.003  
+min_particles: 100  
+max_particles: 1200  
+laser_max_beams: 150  
+save_pose_rate: 1.0  
+use_map_topic: true
+
+
+
+

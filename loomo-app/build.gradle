@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        applicationId "de.iteratec.loomo"
+        // Android 4.0+ http://dannyroa.com/2013/10/17/why-its-time-to-support-only-android-4-0-and-above
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+        ndk {
+            // Specifies the ABI configurations of your native
+            // libraries Gradle should build and package with your APK.
+            abiFilters 'armeabi-v7a'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        /* https://github.com/rosjava/android_core/issues/194 */
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        doNotStrip '*/mips/*.so'
+        doNotStrip '*/mips64/*.so'
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs 'jniLibs/armeabi-v7a/'
+
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.so'])
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    compile fileTree(dir: "$buildDir/native-libs", include: 'native-libs.jar')
+    task nativeLibsToJar(type: Jar, description: 'create a jar archive of the native libs') {
+        destinationDir file("$buildDir/native-libs")
+        baseName 'native-libs'
+        from fileTree(dir: 'libs', include: '**/*.so')
+        into 'lib/'
+    }
+
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn(nativeLibsToJar)
+    }
+
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.6'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.0.1'
+    compile 'org.apache.commons:commons-math3:3.6.1'
+    compile project(':libraries:rosandroid-core')
+    compile 'org.ros.rosjava_core:rosjava_helpers:[0.3, 0.4)'
+    compile 'org.ros.rosjava_core:rosjava_geometry:[0.3, 0.4)'
+    compile 'com.segway.robot:basesdk:0.6.744'
+    compile 'com.segway.robot:emoji:0.1.28'
+    compile 'com.segway.robot:headsdk:0.6.744'
+    compile 'com.segway.robot:sensorsdk:0.6.744'
+    compile 'com.segway.robot:speech-sdk:0.5.327'
+    compile 'com.segway.robot:visionsdk:0.6.545'
+    compile 'com.segway.robot:robot-connectivity-sdk:0.5.100'
+    compile 'com.segway.robot:base-connectivity-sdk:0.5.100'
+    compile 'com.segway.robot:basic-class:0.6.179'
+    compile 'com.segway.robot:sdkbase:0.1.69'
+    compile 'com.segway.robot:support-lib:1.1.2'
+    compile 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.2.1'
+    // Droidspeech
+    compile 'com.github.vikramezhil:DroidSpeech:v2.0.3'
+    //
+    compile 'com.squareup.retrofit2:retrofit:2.4.0'
+}

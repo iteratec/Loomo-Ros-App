@@ -1,0 +1,41 @@
+
+{
+	"buildFiles" : 
+	[
+		"/home/maximilian/hpa_loomo/receptionist-app/loomo-app/src/main/cpp/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/home/maximilian/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/maximilian/hpa_loomo/receptionist-app/loomo-app/.externalNativeBuild/cmake/release/armeabi-v7a --target clean"
+	],
+	"libraries" : 
+	{
+		"hello-jni-Release-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "hello-jni",
+			"buildCommand" : "/home/maximilian/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/maximilian/hpa_loomo/receptionist-app/loomo-app/.externalNativeBuild/cmake/release/armeabi-v7a --target hello-jni",
+			"buildType" : "release",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=/home/maximilian/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64 --sysroot=/home/maximilian/Android/Sdk/ndk-bundle/sysroot -Dhello_jni_EXPORTS  -isystem /home/maximilian/Android/Sdk/ndk-bundle/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -Os -DNDEBUG  -fPIC      -c ",
+					"src" : "/home/maximilian/hpa_loomo/receptionist-app/loomo-app/src/main/cpp/hello-jni.c",
+					"workingDirectory" : "/home/maximilian/hpa_loomo/receptionist-app/loomo-app/.externalNativeBuild/cmake/release/armeabi-v7a"
+				}
+			],
+			"output" : "/home/maximilian/hpa_loomo/receptionist-app/loomo-app/build/intermediates/cmake/release/obj/armeabi-v7a/libhello-jni.so",
+			"toolchain" : "13751472920699624575"
+		}
+	},
+	"toolchains" : 
+	{
+		"13751472920699624575" : 
+		{
+			"cCompilerExecutable" : "/home/maximilian/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/home/maximilian/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}

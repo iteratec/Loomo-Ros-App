@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iteratec Receptionist</string>
+    <string name="ros_introduction">Basic receptionist use case with loomo.</string>
+    <string name="title_activity_ros">Receptionist</string>
+    <bool name="logging">true</bool>
+    <string name="OdometryPublisher">OdometryPublisher</string>
+    <string name="TFPublisher">TFPublisher</string>
+    <string name="DepthImageListener">DepthImageListener</string>
+    <string name="ColorImageListener">ColorImageListener</string>
+    <string name="ros_activity_hello">Hallo friend</string>
+    <string name="active_state">Active State</string>
+    <string-array name="mutedTAGS">
+        <item>@string/TFPublisher</item>
+        <item>@string/OdometryPublisher</item>
+        <item>@string/DepthImageListener</item>
+        <item>@string/ColorImageListener</item>
+    </string-array>
+
+    <string-array name="positions">
+        <item>Standort auswählen</item>
+        <item>MUC</item>
+        <item>MUC_OG</item>
+        <item>resetOdom</item>
+        <item>raw_mode</item>
+        <item>nav_mode</item>
+        <item>init_navigation</item>
+        <item>start_navigation</item>
+        <item>continue_navigation</item>
+        <item>goal_reached</item>
+        <item>back_to_start</item>
+        <item>drivein2ElevatorROS</item>
+        <item>drive2DoorROS</item>
+        <item>drive2ElevatorROS</item>
+        <item>Pepper</item>
+        <item>changeParams</item>
+        <item>elevator</item>
+    </string-array>
+</resources>
