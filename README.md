@@ -141,7 +141,7 @@ In loomo-app/src/main/res/raw/laser_filter.yaml and loomo-app/src/main/res/raw/l
 ## Drawing a new map
 Ensure that your PC, Loomo and the Raspberry Pi are all in the same wireless network. You can test this by pinging Loomo and the Raspberry Pi. You should also check that the time in all systems is synchronized, otherwise you will run into trouble with the transformations later on.
 
-In the Loomo App you only need to run the LoomoRosBridge node, so you can uncomment the other nodes in startNodes() in the RosService.
+In the Loomo App you only need to run the LoomoRosBridge node and the ScanFilterNodes, so you can uncomment the other nodes in startNodes() in the RosService.
 
 Start the ROS master on your PC by typing
 ```
