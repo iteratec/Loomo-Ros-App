@@ -49,16 +49,11 @@ http://www.slamtec.com/en/lidar/a1
 ```
 
 ### Setting up the Raspberry Pi and the Laserscanner
-You can use the Raspberry Pi image provided here:
-```
-https://github.com/iteratec/Loomo-Ros-Slam-Launchfiles
-```
-or set it up on your own. If you use the provided image, you can skip ahead to connecting to the Raspberry Pi via ssh, as the image has the necessary ROS packages installed. Otherwise,
-depending on what Ubuntu or Raspbian version you installed on the Raspberry Pi, the according steps for installing ROS Kinetic need to be taken. In this work Debian Stretch was used. The according installation guide for ROS can be found here
+Depending on what Ubuntu or Raspbian version you installed on the Raspberry Pi, the according steps for installing ROS Kinetic need to be taken. In this work Debian Stretch was used. If you chose to use it as well, you can find the installation guide for ROS here
 ```
 http://wiki.ros.org/ROSberryPi/Installing%20ROS%20Kinetic%20on%20the%20Raspberry%20Pi
 ```
-If you follow that guide, it can be useful to install the common_msgs package right away, as the rplidar rosnode uses it. Therefor it can be added to the installation here:
+If you follow that guide, it can be useful to install the common_msgs package right away, as the rplidar rosnode uses it. Therefor it can be added to the installation in this line:
 ```
 rosinstall_generator ros_comm common_msgs --rosdistro kinetic --deps --wet-only --tar > kinetic-custom_ros.rosinstall
 ```
@@ -68,7 +63,7 @@ https://github.com/robopeak/rplidar_ros
 ```
 It can be desirable to start the rplidar node from your PC via ssh, so you might want to enable it. Then you can control the Raspberry from your PC by typing:
 ```
-ssh pi@<RaspberryPiIp>
+ssh pi@<RaspberryPiIP>
 ```
 the standard password is raspberry.
 Lastly the ROS MASTER URI and the ROS IP need to be set in the ~/.bashrc file of the Raspberry Pi. Type
@@ -100,7 +95,7 @@ cd src
 ```
 now add the loomo_laser folder into the src folder, it can be found here:
 ```
-https://github.com/iteratec/Loomo-Ros-Slam-Launchfiles
+https://github.com/iteratec/Loomo-Ros-Slam-Launch
 ```
 then run
 ```
@@ -117,7 +112,7 @@ as well as add the ROS IP and HOSTNAME to the ~/.bashrc file:
 export ROS_IP=<yourPCIP>
 export ROS_HOSTNAME=<yourPCIP>
 ```
-If your ROS MASTER does not run your PC, you need to add the MASTER_URI as well
+If your ROS MASTER does not run on your PC, you need to add the MASTER_URI as well
 ```
 export ROS_MASTER_URI=http://<MasterURI>:11311
 ```
@@ -150,7 +145,7 @@ roscore
 in a terminal, then start the App on Loomo.
 Connect to your Raspberry Pi via ssh
 ```
-ssh pi@<RaspberryPiIp>
+ssh pi@<RaspberryPiIP>
 ```
 the standard password is raspberry.  Then launch the laser-scanner
 ```
@@ -211,7 +206,7 @@ roscore
 ```
 Connect to your Raspberry Pi via ssh
 ```
-ssh pi@<RaspberryPiIp>
+ssh pi@<RaspberryPiIP>
 ```
 the standard password is raspberry.  Then launch the laserscanner
 ```
