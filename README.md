@@ -12,7 +12,7 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE.md](LIC
 
 ### Project Structure ###
 
-The RosDeveloperAvtivity is the main entry point of the Project.
+The RosDeveloperActivity is the main entry point of the Project.
 It initializes the EmojiView of Loomos API.
 In the Background it starts the ROS System.
 The Activity extends RosActivity and with the super Constructor the Master chooser can be started. When the constructor is given a master URI it will connect directly which is useful for faster app boot when developing.
